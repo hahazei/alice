@@ -3,6 +3,9 @@ package com.xw.alice.model;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
@@ -29,6 +32,8 @@ public class User extends Model<User> {
     /**
      * 年龄
      */
+    @JsonSerialize(using = CustomSerialize.class)
+    @JsonProperty("ageType")
     private Integer age;
     /**
      * 手机号码
